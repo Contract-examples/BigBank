@@ -18,7 +18,7 @@ forge script script/BigBank.s.sol --fork-url localhost --broadcast
 ```
 ```
 == Logs ==
-  BigBank deployed to: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+  BigBank deployed to: 0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e
 ```
 
 ### Interact with BigBank
