@@ -11,6 +11,7 @@ contract BigBank is Bank {
     // 5% annual interest rate (big bank)
     uint256 public constant INTEREST_RATE = 5;
 
+    // Modifier to ensure the deposit amount is greater than 0.001 ether
     modifier minDeposit() {
         if (msg.value <= 0.001 ether) {
             revert DepositTooSmall();
@@ -18,10 +19,12 @@ contract BigBank is Bank {
         _;
     }
 
-    function deposit() public payable override minDeposit {
+    // Override the deposit function from the Bank contract
+    function deposit() public payable virtual override minDeposit {
         super.deposit();
     }
 
+    // External function to transfer the admin role
     function transferAdmin(address newAdmin) external {
         if (msg.sender != admin) {
             revert OnlyAdminCanTransfer();
