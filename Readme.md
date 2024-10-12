@@ -39,7 +39,7 @@ forge script script/Admin.s.sol --fork-url localhost --broadcast
 ```
 ```
 == Logs ==
-  Admin contract deployed to: 0x0f5D1ef48f12b6f691401bfe88c2037c690a6afe
+  Admin contract deployed to: 0x0165878A594ca255338adfa4d48449f69242Eb8F
 ```
 
 ### Interact with Admin
