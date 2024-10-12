@@ -32,3 +32,12 @@ forge script script/BigBankInteract.s.sol:BigBankInteractScript --fork-url local
   Admin transferred to: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
   Current admin: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
 ```
+
+### Deploy Admin to Anvil
+```
+forge script script/Admin.s.sol --fork-url localhost --broadcast
+```
+```
+== Logs ==
+  Admin contract deployed to: 0x0f5D1ef48f12b6f691401bfe88c2037c690a6afe
+```
