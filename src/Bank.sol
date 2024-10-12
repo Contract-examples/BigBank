@@ -12,7 +12,6 @@ abstract contract Bank is IBank {
     // Custom errors
     error DepositTooLow();
     error OnlyAdminCanWithdraw();
-    error InsufficientBalance(uint256 requested, uint256 available);
 
     constructor() {
         admin = msg.sender;
@@ -61,10 +60,12 @@ abstract contract Bank is IBank {
         if (msg.sender != admin) {
             revert OnlyAdminCanWithdraw();
         }
-        if (amount > address(this).balance) {
-            revert InsufficientBalance(amount, address(this).balance);
+        // If the requested amount is greater than the balance, set amount to the balance
+        uint256 balance = address(this).balance;
+        amount = amount > balance ? balance : amount;
+        if (amount != 0) {
+            payable(admin).transfer(amount);
         }
-        payable(admin).transfer(amount);
     }
 
     function getBalance() public view virtual override returns (uint256) {
