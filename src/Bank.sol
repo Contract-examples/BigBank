@@ -57,6 +57,7 @@ abstract contract Bank is IBank {
 
     // Withdrawal function (only callable by admin)
     function withdraw(uint256 amount) external virtual override {
+        // Revert if caller is not admin
         if (msg.sender != admin) {
             revert OnlyAdminCanWithdraw();
         }
