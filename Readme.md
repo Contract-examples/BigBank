@@ -46,3 +46,14 @@ forge script script/Admin.s.sol --fork-url localhost --broadcast
 ```
 forge script script/AdminInteract.s.sol:AdminInteractScript --fork-url localhost --broadcast
 ```
+```
+== Logs ==
+  Admin contract owner: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Sent 2 ETH to Admin contract
+  Withdrawn 1 ETH from Admin contract
+  Transferred BigBank admin rights to Admin contract
+  Withdrawn 0.1 ETH from BigBank using Admin contract
+  Withdrawn all funds from BigBank using Admin contract
+  Final Admin contract balance: 2 ETH
+  Final BigBank balance: 0 ETH
+```
