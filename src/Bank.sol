@@ -12,6 +12,7 @@ abstract contract Bank is IBank {
     // Custom errors
     error DepositTooLow();
     error OnlyAdminCanWithdraw();
+    error WithdrawalFailed();
 
     constructor() {
         admin = msg.sender;
@@ -65,7 +66,11 @@ abstract contract Bank is IBank {
         uint256 balance = address(this).balance;
         amount = amount > balance ? balance : amount;
         if (amount != 0) {
-            payable(admin).transfer(amount);
+            // Transfer fixedly uses 2300 gas, which may not be enough in some cases
+            (bool success,) = payable(admin).call{ value: amount }("");
+            if (!success) {
+                revert WithdrawalFailed();
+            }
         }
     }
 
