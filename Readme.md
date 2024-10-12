@@ -24,3 +24,10 @@ forge script script/BigBank.s.sol --fork-url localhost --broadcast
 ```
 forge script script/BigBankInteract.s.sol:BigBankInteractScript --fork-url localhost --broadcast
 ```
+```
+== Logs ==
+  Deposited 0.002 ether
+  Current bank balance: 2000000000000000
+  Admin transferred to: 0x1234567890123456789012345678901234567890
+  Current admin: 0x1234567890123456789012345678901234567890
+```
