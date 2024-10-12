@@ -20,3 +20,7 @@ forge script script/BigBank.s.sol --fork-url localhost --broadcast
 == Logs ==
   BigBank deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
 ```
+
+```
+forge script script/BigBankInteract.s.sol:BigBankInteractScript --fork-url localhost --broadcast
+```
