@@ -6,10 +6,13 @@
 
 ### Create a ``.env`` file
 ```
-WALLET_PRIVATE_KEY=your wallet private key [Used for BankInteract.s.sol/Bank.s.sol]
-USER1_PRIVATE_KEY=private key of user1 [Used for BankInteract.s.sol]
-USER2_PRIVATE_KEY=private key of user2 [Used for BankInteract.s.sol]
-BANK_CONTRACT_ADDRESS=your contract address [Used for BankSepoliaInteract.s.sol]
+API_KEY_ETHERSCAN=xxx
+WALLET_PRIVATE_KEY=xxx
+USER1_PUBLIC_KEY=xxx
+USER1_PRIVATE_KEY=xxx
+USER2_PRIVATE_KEY=xxx
+BANK_CONTRACT_ADDRESS=xxx
+ADMIN_CONTRACT_ADDRESS=xxx
 ```
 
 ### Deploy BigBank to Anvil
