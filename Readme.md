@@ -71,7 +71,7 @@ anvil
 
 ##### Deploy to ``Anvil``
 ```
-forge script script/Bank.s.sol --fork-url localhost --broadcast
+forge script script/BigBank.s.sol --fork-url localhost --broadcast
 ```
 
 ##### Deploy to ``Anvil`` with ``BankInteract.s.sol``
