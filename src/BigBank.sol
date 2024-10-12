@@ -8,6 +8,9 @@ contract BigBank is Bank {
     error OnlyAdminCanTransfer();
     error InvalidAdminAddress();
 
+    // 5% annual interest rate (big bank)
+    uint256 public constant INTEREST_RATE = 5;
+
     modifier minDeposit() {
         if (msg.value <= 0.001 ether) {
             revert DepositTooSmall();
@@ -15,20 +18,23 @@ contract BigBank is Bank {
         _;
     }
 
-    function deposit() public payable virtual override minDeposit {
+    function deposit() public payable override minDeposit {
         super.deposit();
     }
 
     function transferAdmin(address newAdmin) external {
-        // Revert if caller is not admin
         if (msg.sender != admin) {
             revert OnlyAdminCanTransfer();
         }
-        // Revert if new admin address is zero
         if (newAdmin == address(0)) {
             revert InvalidAdminAddress();
         }
-        // Transfer admin rights
         admin = newAdmin;
+    }
+
+    // Implementation of the abstract function
+    function calculateInterest(address user) public view override returns (uint256) {
+        uint256 userBalance = balances[user];
+        return (userBalance * INTEREST_RATE) / 100;
     }
 }
