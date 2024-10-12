@@ -6,6 +6,9 @@ import "./IBank.sol";
 contract Admin {
     address public owner;
 
+    // Constant to represent withdrawing all funds
+    uint256 private constant WITHDRAW_ALL = type(uint256).max;
+
     // Custom error
     error OnlyOwnerCanCall();
 
@@ -37,7 +40,7 @@ contract Admin {
     function _withdrawFromBank(IBank bank, uint256 amount) internal onlyOwner {
         uint256 bankBalance = bank.getBalance();
         if (bankBalance > 0) {
-            bank.withdraw(amount == 0 || amount > bankBalance ? bankBalance : amount);
+            bank.withdraw(amount == WITHDRAW_ALL || amount > bankBalance ? bankBalance : amount);
         }
     }
 
@@ -48,6 +51,6 @@ contract Admin {
 
     // External function to withdraw all funds from a bank
     function adminWithdrawAll(IBank bank) external {
-        _withdrawFromBank(bank, 0);
+        _withdrawFromBank(bank, WITHDRAW_ALL);
     }
 }
