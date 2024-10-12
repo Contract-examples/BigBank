@@ -26,13 +26,11 @@ contract Admin {
 
     // External function to withdraw funds from the admin contract
     function withdrawFromAdmin(uint256 amount) external onlyOwner {
-        if (address(this).balance < amount) {
-            // If the requested amount is greater than the balance,
-            // set amount to the balance
-            amount = address(this).balance;
+        uint256 balance = address(this).balance;
+        amount = amount == 0 ? balance : (amount > balance ? balance : amount);
+        if (amount > 0) {
+            payable(owner).transfer(amount);
         }
-        // Transfer the amount to the owner
-        payable(owner).transfer(amount);
     }
 
     // Internal function to withdraw funds from a bank
