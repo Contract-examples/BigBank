@@ -11,7 +11,8 @@ contract Admin {
 
     // Custom error
     error OnlyOwnerCanCall();
-
+    error WithdrawalFailed();
+    
     constructor() {
         owner = msg.sender;
     }
@@ -32,7 +33,10 @@ contract Admin {
         uint256 balance = address(this).balance;
         amount = amount == 0 ? balance : (amount > balance ? balance : amount);
         if (amount > 0) {
-            payable(owner).transfer(amount);
+            (bool success, ) = payable(owner).call{value: amount}("");
+            if (!success) {
+                revert WithdrawalFailed();
+            }
         }
     }
 
